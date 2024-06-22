@@ -31,11 +31,14 @@ function handlerInput(event) {
 form.addEventListener('submit', handleGetInput);
 function handleGetInput(event) {
   event.preventDefault();
-  const { email, message } = event.currentTarget.elements;
-  if (!email.value || !message.value) {
+  const emailValue = input.value.trim();
+  const messageValue = textarea.value.trim();
+  if (!emailValue || !messageValue) {
     alert('Fill please all fields');
     return;
   }
+  formData.email = emailValue;
+  formData.message = messageValue;
   console.table(formData);
   form.reset();
   localStorage.removeItem(LS_KEY);
